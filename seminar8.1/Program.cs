@@ -1,9 +1,6 @@
-﻿// Задача 46: Задайте двумерный массив размером m×n, 
-// заполненный случайными целыми числами.
-// m = 3, n = 4.
-// 1 4 8 19
-// 5 -2 33 -2
-// 77 3 8 1
+﻿// Задача 53: Задайте двумерный массив. 
+// Напишите программу, которая поменяет местами первую и последнюю строку массива.
+
 Console.WriteLine("Введите количество строк:");
 int numM = Convert.ToInt32(Console.ReadLine());
 Console.WriteLine("Введите количество столбцов");
@@ -16,7 +13,7 @@ int [,] NewArray (int m, int n)
     {
         for (int j = 0; j < n; j++)
         {
-            newArr[i , j] = new Random().Next( -50, 51);
+            newArr[i , j] = new Random().Next( 100, 1000);
         }
     }
     return newArr;
@@ -34,5 +31,21 @@ void PrintArr (int [,] arr)
     
 }
 int [,] myArr =  NewArray(numM, numN);
+PrintArr(myArr);
+Console.WriteLine();
+
+void ChangeFirstAndLastRow (int [,] array) 
+{
+    int help = 0;
+    for (int i = 0; i < array.GetLength(1); i++)
+    {
+        help = array[0, i];
+        array[0 ,i] = array[array.GetLength(0) -1 , i];
+        array[array.GetLength(0) -1 , i] = help;
+    }
+}
+
+ChangeFirstAndLastRow(myArr);
+Console.WriteLine("Changing matrix");
 PrintArr(myArr);
 
